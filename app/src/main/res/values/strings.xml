@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">XChange</string>
+    <string name="authorization_title">Авторизация</string>
+    <string name="app_logo">Логотип приложения</string>
+    <string name="btn_authorize">Войти</string>
+    <string name="btn_register">Зарегистрироваться</string>
+    <string name="hnt_auth_email">Адрес электронной почты</string>
+    <string name="hnt_auth_password">Пароль</string>
+    <string name="forgot_password"><u>Забыли пароль?</u></string>
+    <string name="registration_title">Регистрация</string>
+    <string name="hnt_reg_email">Адрес электронной почты</string>
+    <string name="hnt_reg_username">Имя пользователя</string>
+    <string name="reg_drop_down_default">Выберите роль</string>
+    <string name="str_continue">Далее</string>
+    <string name="str_password">Пароль</string>
+    <string name="str_repeat_password">Повторный пароль</string>
+    <string name="password_recovery_title">Восстановление пароля</string>
+    <string name="tl_pass_rec_info">Мы отправим вам код для подтверждения личности</string>
+    <string name="hnt_pass_rec_code">Код подтверждения</string>
+    <string name="hnt_pass_rec_new_password">Новый пароль</string>
+    <string name="hnt_pass_rec_new_password_repeat">Повторный новый пароль</string>
+    <string name="btn_change_password">Изменить пароль</string>
+
+    <string-array name="reg_roles_array">
+        <item>Покупатель</item>
+        <item>Поставщик</item>
+    </string-array>
+
+    <string name="navig_home">Курс</string>
+    <string name="navig_search">Поиск</string>
+    <string name="navig_subscriptions">Подписки</string>
+    <string name="navig_account">Профиль</string>
+    <string name="navig_products">Товары</string>
+    <string name="navig_notifications">Оповещения</string>
+    <string name="tl_email"><u>Почта</u></string>
+    <string name="tl_username"><u>Имя пользователя</u></string>
+    <string name="exit_account"><u>Выйти из аккаунта</u></string>
+    <string name="hnt_input_products">Введите товары</string>
+    <string name="str_upload">Загрузить</string>
+    <string name="tl_supplier_added_products">* Поставщики добавили товар *</string>
+    <string name="str_dash">—</string>
+    <string name="str_default_model"><u>iPhone 12 128ГБ White</u></string>
+    <string name="str_unsubscribe_model">Отписаться от модели</string>
+    <string name="str_create_order">Оформление заявки</string>
+    <string name="str_amount">Количество</string>
+    <string name="str_cancellation">Отмена</string>
+    <string name="str_send">Отправить</string>
+    <string name="tl_new_request">* Новая заявка на покупку *</string>
+    <string name="tl_deleted_price_list">* Ваш прайс-лист был удален *</string>
+    <string name="str_update_price_list">Обновите ваш прайс-лист</string>
+    <string name="str_start_searching">Начните поиск...</string>
+    <string name="str_nothing_was_founded">Ничего не найдено...</string>
+    <string name="hnt_input_search_request">Введите поисковой запрос</string>
+</resources>

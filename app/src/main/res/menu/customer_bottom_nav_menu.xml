@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="@string/navig_home"
+        android:icon="@drawable/icon_navig_menu_home_foreground"/>
+    <item
+        android:id="@+id/search"
+        android:title="@string/navig_search"
+        android:icon="@drawable/icon_navig_menu_search_foreground"/>
+    <item
+        android:id="@+id/subscriptions"
+        android:title="@string/navig_subscriptions"
+        android:icon="@drawable/icon_navig_menu_search_subscriptions"/>
+    <item
+        android:id="@+id/account"
+        android:title="@string/navig_account"
+        android:icon="@drawable/icon_navig_menu_account_foreground"/>
+</menu>
