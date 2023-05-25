@@ -11,9 +11,9 @@ import com.example.xchange.R
 import com.example.xchange.model.Product
 
 
-class ProductAdapter(private val data: List<Product>) : RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
+class ProductAdapter(private val data: List<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    class MyViewHolder(val view: View): RecyclerView.ViewHolder(view){
+    class ProductViewHolder(val view: View): RecyclerView.ViewHolder(view){
 
         fun bind(product: Product){
 
@@ -52,17 +52,17 @@ class ProductAdapter(private val data: List<Product>) : RecyclerView.Adapter<Pro
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.customer_search_card, parent, false)
 
-        return MyViewHolder(v)
+        return ProductViewHolder(v)
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.bind(data[position])
     }
 }

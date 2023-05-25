@@ -6,14 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.xchange.GlobalNavigationHandler
 import com.example.xchange.GlobalNavigator
 import com.example.xchange.R
-import com.google.android.material.card.MaterialCardView
+import com.example.xchange.api_clients.CustomerClient
 
 class CustomerSubscriptionsFragment : Fragment(), GlobalNavigationHandler {
+    private lateinit var customerClient: CustomerClient
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var manager: RecyclerView.LayoutManager
+    private lateinit var subscriptionsAdapter: RecyclerView.Adapter<*>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,38 +26,17 @@ class CustomerSubscriptionsFragment : Fragment(), GlobalNavigationHandler {
     ): View? {
         val view = inflater.inflate(R.layout.customer_subscriptions_fragment, container, false)
 
-        val supplierLinearLayout = view.findViewById<LinearLayout>(R.id.ll_suppliers)
-        val addedSuppliersLinearLayout = view.findViewById<LinearLayout>(R.id.ll_added_suppliers)
+        customerClient = CustomerClient()
+        manager = LinearLayoutManager(activity)
+        recyclerView = view.findViewById(R.id.subscriptions_recycler_view)
 
-        supplierLinearLayout.setOnClickListener {
-            val requestCard = view.findViewById<MaterialCardView>(R.id.mcv_request_card)
-            val requestCardClickedModel = view.findViewById<TextView>(R.id.tv_request_card_model)
-            val requestCardClickedSupplier = view.findViewById<TextView>(R.id.tv_request_card_supplier)
+        getSubscriptions()
 
-            requestCard.visibility=View.VISIBLE
-        }
-
-        addedSuppliersLinearLayout.setOnClickListener {
-            val requestCard = view.findViewById<MaterialCardView>(R.id.mcv_request_card)
-            val requestCardClickedModel = view.findViewById<TextView>(R.id.tv_request_card_model)
-            val requestCardClickedSupplier = view.findViewById<TextView>(R.id.tv_request_card_supplier)
-
-            requestCard.visibility=View.VISIBLE
-        }
-
-        val requestCardCancel = view.findViewById<TextView>(R.id.tv_request_card_cancel)
-        val requestCardSend = view.findViewById<TextView>(R.id.tv_request_card_send)
-
-        requestCardCancel.setOnClickListener {
-            val requestCard = view.findViewById<MaterialCardView>(R.id.mcv_request_card)
-            requestCard.visibility=View.INVISIBLE
-        }
-
-        requestCardSend.setOnClickListener {
-            val requestCard = view.findViewById<MaterialCardView>(R.id.mcv_request_card)
-            requestCard.visibility=View.INVISIBLE
-        }
         return view
+    }
+
+    private fun getSubscriptions() {
+        TODO("добавить получение")
     }
 
     override fun logout() {

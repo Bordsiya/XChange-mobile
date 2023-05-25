@@ -17,4 +17,5 @@ interface CustomerAPI {
     @POST(Constants.NOTIFICATION_STUFF_URL)
     fun changeNotificationSubscription(
         @Body changeNotificationSubscriptionRequest: ChangeNotificationSubscriptionRequest): Call<Void>
+
 }

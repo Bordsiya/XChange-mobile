@@ -1,6 +1,7 @@
 package com.example.xchange.retrofit
 
 import com.example.xchange.Constants
+import com.example.xchange.model.Notification
 import com.example.xchange.model.UploadProductsRequest
 import retrofit2.Call
 import retrofit2.http.Body
@@ -11,4 +12,7 @@ interface SupplierAPI {
 
     @POST(Constants.SUPPLIER_STUFF_URL)
     fun uploadProducts(@Body uploadProductsRequest: UploadProductsRequest): Call<Void>
+
+    @GET(Constants.NOTIFICATION_LIST_URL)
+    fun getNotifications(): Call<List<Notification>>
 }

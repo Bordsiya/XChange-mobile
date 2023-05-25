@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/CardStyle"
+    app:cardElevation="5dp"
+    android:elevation="5dp"
+    android:padding="5dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/tl_supplier_added_products"
+            style="@style/CardTitle"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:text="@string/str_default_model"
+            app:layout_constraintTop_toBottomOf="@+id/sv_scroll_subscriptions"
+            style="@style/CardModelTitle"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:elevation="0dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:elevation="0dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_flag_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_flag_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_flag_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="30"
+                android:elevation="0dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="44.500₽"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="44.900₽"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="45.500₽"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:elevation="0dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/str_dash"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/str_dash"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/str_dash"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_suppliers"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="30"
+                android:elevation="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:text="/@MrMac"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    style="@style/SupplierHighlight"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="/@pksells"
+                    android:gravity="center"
+                    style="@style/SupplierHighlight"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="/@PavelKtso"
+                    android:gravity="center"
+                    style="@style/SupplierHighlight"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/added_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/green"
+            android:elevation="0dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="2">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_plus_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_plus_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:elevation="0dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_flag_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_flag_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="30"
+                android:elevation="0dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="44.500₽"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="44.900₽"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:elevation="0dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/str_dash"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/str_dash"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_added_suppliers"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="30"
+                android:elevation="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:text="/@MrMac"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    style="@style/SupplierHighlight"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="/@pksells"
+                    android:gravity="center"
+                    style="@style/SupplierHighlight"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/removed_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/red"
+            android:elevation="0dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:elevation="0dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_minus_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_minus_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:elevation="0dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_flag_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/default_flag_icon_foreground"
+                    android:maxWidth="42dip"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds ="true"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="30"
+                android:elevation="0dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="44.500₽"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="44.900₽"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:elevation="0dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/str_dash"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="@string/str_dash"
+                    android:gravity="center"
+                    style="@style/CardText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="30"
+                android:elevation="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:text="/@MrMac"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    style="@style/SupplierHighlight"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="/@pksells"
+                    android:gravity="center"
+                    style="@style/SupplierHighlight"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/notification_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="12dp"
+            android:text="12.04.2023 20:20"
+            style="@style/CardDataStyle"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/ButtonGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/str_unsubscribe_model" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
