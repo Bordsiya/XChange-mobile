@@ -1,11 +1,15 @@
-package com.example.xchange
+package com.example.xchange.screens
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.xchange.GlobalNavigationHandler
+import com.example.xchange.GlobalNavigator
+import com.example.xchange.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class SupplierHomeActivity : AppCompatActivity() {
+class SupplierHomeActivity : AppCompatActivity(), GlobalNavigationHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +26,10 @@ class SupplierHomeActivity : AppCompatActivity() {
 
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.home->setCurrentFragment(supplierHomeFragment)
-                R.id.products->setCurrentFragment(supplierProductsFragment)
-                R.id.notifications->setCurrentFragment(supplierNotificationsFragment)
-                R.id.account->setCurrentFragment(supplierAccountFragment)
+                R.id.home ->setCurrentFragment(supplierHomeFragment)
+                R.id.products ->setCurrentFragment(supplierProductsFragment)
+                R.id.notifications ->setCurrentFragment(supplierNotificationsFragment)
+                R.id.account ->setCurrentFragment(supplierAccountFragment)
             }
             true
         }
@@ -37,4 +41,21 @@ class SupplierHomeActivity : AppCompatActivity() {
             commit()
         }
 
+    override fun logout() {
+        val intent = Intent(
+            this@SupplierHomeActivity,
+            AuthorizationActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        GlobalNavigator.registerHandler(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        GlobalNavigator.unregisterHandler()
+    }
 }

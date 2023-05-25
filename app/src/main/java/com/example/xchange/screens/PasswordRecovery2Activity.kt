@@ -1,9 +1,10 @@
-package com.example.xchange
+package com.example.xchange.screens
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.xchange.R
 
 class PasswordRecovery2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
