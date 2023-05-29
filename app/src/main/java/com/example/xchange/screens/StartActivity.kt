@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), GlobalNavigationHandler {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     val role = response.headers()["Role"]
-                    if (response.code() == HttpURLConnection.HTTP_OK && role != null) {
+                    if (role != null) {
                         log(role)
                     }
                     else {

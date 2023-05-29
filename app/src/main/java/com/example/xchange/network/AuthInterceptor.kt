@@ -1,6 +1,7 @@
 package com.example.xchange.network
 
 import android.content.Context
+import android.util.Log
 import com.example.xchange.GlobalNavigator
 import com.example.xchange.SessionManager
 import okhttp3.Interceptor
@@ -11,9 +12,9 @@ class AuthInterceptor (context: Context) : Interceptor {
     private val sessionManager = SessionManager(context)
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        var requestDefault = chain.request()
-        var accessToken = sessionManager.fetchAccessToken()
-        var refreshToken = sessionManager.fetchRefreshToken()
+        val requestDefault = chain.request()
+        val accessToken = sessionManager.fetchAccessToken()
+        val refreshToken = sessionManager.fetchRefreshToken()
         val shouldRemoveAuthHeaders = requestDefault.headers["isAuthorizable"] == "false"
 
         var requestAccess = requestDefault
@@ -23,28 +24,30 @@ class AuthInterceptor (context: Context) : Interceptor {
 
         val responseAccess = chain.proceed(requestAccess)
         if (responseAccess.code == HttpURLConnection.HTTP_UNAUTHORIZED) {
-            //responseAccess.close()
+            responseAccess.close()
             val requestRefresh = requestDefault.newBuilder().header("X-Refresh-Token", "$refreshToken").build()
             val responseRefresh = chain.proceed(requestRefresh)
-            if(responseRefresh.code == HttpURLConnection.HTTP_OK) {
-                //responseRefresh.close()
+            if(responseRefresh.code != HttpURLConnection.HTTP_UNAUTHORIZED) {
+                responseRefresh.close()
                 val newAccessToken = responseRefresh.headers["X-Access-Token"]
-                val newRefreshToken = responseRefresh.headers["X-Refresh-Token"]
-                return if (newAccessToken == null || newRefreshToken == null) {
+                return if (newAccessToken == null) {
                     GlobalNavigator.logout()
                     responseRefresh
                 } else {
                     sessionManager.saveAccessToken(newAccessToken)
-                    sessionManager.saveRefreshToken(newRefreshToken)
                     val requestNewAccess = requestDefault.newBuilder().header("X-Access-Token", "$newAccessToken").build()
                     chain.proceed(requestNewAccess)
                 }
             }
             else {
-                //responseRefresh.close()
+                responseRefresh.close()
                 GlobalNavigator.logout()
                 return responseRefresh
             }
+        }
+        else if (responseAccess.code == HttpURLConnection.HTTP_OK && (accessToken == null || refreshToken == null)) {
+            sessionManager.saveAccessToken(responseAccess.headers["X-Access-Token"]!!)
+            sessionManager.saveRefreshToken(responseAccess.headers["X-Refresh-Token"]!!)
         }
         return responseAccess
     }

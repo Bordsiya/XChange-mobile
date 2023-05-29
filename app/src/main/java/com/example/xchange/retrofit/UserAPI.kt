@@ -17,7 +17,7 @@ interface UserAPI {
     @POST(Constants.LOGIN_URL)
     fun login(@Body authCredentials: AuthCredentials): Call<Void>
 
-    @POST(Constants.LOGIN_URL)
+    @POST(Constants.DEFAULT_URL)
     fun loginWithAccessToken(): Call<Void>
 
     @Headers("isAuthorizable: false")

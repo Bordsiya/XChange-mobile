@@ -3,6 +3,7 @@ package com.example.xchange.screens
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -74,6 +75,7 @@ class Registration2Activity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Toast.makeText(this@Registration2Activity, t.message, Toast.LENGTH_SHORT).show()
+                    Log.d("register_request", t.message!!)
                     returnToAuth()
                 }
 
@@ -93,7 +95,7 @@ class Registration2Activity : AppCompatActivity() {
 
     private fun buildRegisterRequest() : RegisterCredentials {
         return RegisterCredentials(
-            intent.getStringExtra("email")!!,
+            //intent.getStringExtra("email")!!,
             intent.getStringExtra("username")!!,
             passwordEt.text.toString(),
             intent.getStringExtra("role")!!
