@@ -75,7 +75,6 @@ class Registration2Activity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Toast.makeText(this@Registration2Activity, t.message, Toast.LENGTH_SHORT).show()
-                    Log.d("register_request", t.message!!)
                     returnToAuth()
                 }
 
@@ -95,7 +94,6 @@ class Registration2Activity : AppCompatActivity() {
 
     private fun buildRegisterRequest() : RegisterCredentials {
         return RegisterCredentials(
-            //intent.getStringExtra("email")!!,
             intent.getStringExtra("username")!!,
             passwordEt.text.toString(),
             intent.getStringExtra("role")!!

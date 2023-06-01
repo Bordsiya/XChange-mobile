@@ -46,23 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tl_registration_title"
         tools:ignore="MissingConstraints">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tl_reg_email"
-            style="@style/TextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
-            android:hint="@string/hnt_reg_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tl_registration_title">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/te_reg_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_reg_username"

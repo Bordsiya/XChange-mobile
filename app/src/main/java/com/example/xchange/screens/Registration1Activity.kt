@@ -18,7 +18,6 @@ class Registration1Activity : AppCompatActivity() {
     private lateinit var languagesArrAdapter: ArrayAdapter<String>
 
     private lateinit var continueRegBtn: Button
-    private lateinit var emailEdt: EditText
     private lateinit var usernameEdt: EditText
     private var selectedRole = "Покупатель";
 
@@ -37,7 +36,6 @@ class Registration1Activity : AppCompatActivity() {
             android.R.layout.simple_dropdown_item_1line, languagesStringArr)
 
         continueRegBtn = findViewById(R.id.btn_reg_continue)
-        emailEdt = findViewById(R.id.te_reg_email)
         usernameEdt = findViewById(R.id.te_reg_username)
     }
 
@@ -60,8 +58,7 @@ class Registration1Activity : AppCompatActivity() {
 
     private fun validateData(): String {
         var errors = ""
-        if (emailEdt.text.toString().isEmpty()
-            || usernameEdt.text.toString().isEmpty() || selectedRole.isEmpty()) {
+        if (usernameEdt.text.toString().isEmpty() || selectedRole.isEmpty()) {
             errors += "Заполните все пустые поля\n"
         }
         return errors
@@ -77,7 +74,6 @@ class Registration1Activity : AppCompatActivity() {
         val intent = Intent(
             this@Registration1Activity,
             Registration2Activity::class.java)
-        intent.putExtra("email", emailEdt.text.toString())
         intent.putExtra("username", usernameEdt.text.toString())
         if (selectedRole == "Покупатель") selectedRole = "Customer"
         else if (selectedRole == "Поставщик") selectedRole = "Supplier"

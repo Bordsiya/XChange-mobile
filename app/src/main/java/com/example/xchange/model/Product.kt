@@ -3,14 +3,14 @@ package com.example.xchange.model
 import com.google.gson.annotations.SerializedName
 
 data class Product(
-    @SerializedName("stuff_type")
+    @SerializedName("stuffType")
     val stuffType: String,
-    @SerializedName("model_id")
+    @SerializedName("modelId")
     val modelId: String,
     @SerializedName("title")
     val title: String,
-    @SerializedName("property_list")
+    @SerializedName("properties")
     val propertyList: List<Property>,
-    @SerializedName("supplier_prices")
+    @SerializedName("supplierPrices")
     val supplierPrices: List<SupplierPrice>
 )

@@ -10,44 +10,6 @@
     android:padding="20dp">
 
     <LinearLayout
-        android:id="@+id/ll_customer_acc_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/tl_customer_acc_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/tl_email"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/customer_acc_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="default-email@mail.ru"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tl_customer_acc_email" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/ll_customer_acc_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +18,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_customer_acc_email"
         tools:ignore="MissingConstraints">
 
         <TextView

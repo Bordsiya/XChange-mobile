@@ -30,11 +30,11 @@ class AuthorizationActivity : AppCompatActivity() {
     private lateinit var authBtn: Button
     private lateinit var forgotPassTv: TextView
 
+    private lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.authorization_activity)
-
-        userClient = UserClient()
 
         initView()
         setListeners()
@@ -46,6 +46,9 @@ class AuthorizationActivity : AppCompatActivity() {
         registerBtn = findViewById(R.id.btn_register)
         authBtn = findViewById(R.id.btn_authorize)
         forgotPassTv = findViewById(R.id.tl_forgot_password)
+
+        userClient = UserClient()
+        sessionManager = SessionManager(this)
     }
 
     private fun setListeners() {
@@ -74,7 +77,12 @@ class AuthorizationActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     val role = response.headers()["Role"]
-                    if (response.code() == HttpURLConnection.HTTP_OK && role != null) {
+                    val newAccessToken = response.headers()["X-Access-Token"]
+                    val newRefreshToken = response.headers()["X-Refresh-Token"]
+                    if (response.code() == HttpURLConnection.HTTP_OK
+                        && role != null && newAccessToken != null && newRefreshToken != null) {
+                        sessionManager.saveAccessToken(newAccessToken)
+                        sessionManager.saveRefreshToken(newRefreshToken)
                         log(role)
                     }
                     else if (response.code() == HttpURLConnection.HTTP_BAD_REQUEST) {

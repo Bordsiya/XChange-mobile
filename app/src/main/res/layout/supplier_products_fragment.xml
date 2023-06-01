@@ -51,6 +51,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="47dp"
             android:text="@string/str_upload" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_view_products"
+            style="@style/ButtonGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="47dp"
+            android:text="@string/str_view_products" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

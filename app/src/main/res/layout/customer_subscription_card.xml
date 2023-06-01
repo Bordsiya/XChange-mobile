@@ -9,7 +9,7 @@
     android:elevation="5dp"
     android:padding="5dp"
     app:cardUseCompatPadding="true">
-
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -444,5 +444,29 @@
             android:text="@string/str_unsubscribe_model" />
 
     </LinearLayout>
+-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="0dp"
+        android:padding="12dp">
 
+        <TextView
+            android:id="@+id/tv_customer_notification_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/tl_deleted_price_list"
+            style="@style/CardTitle"/>
+
+        <TextView
+            android:id="@+id/tv_customer_notification_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/str_update_price_list"
+            style="@style/NotificationTextStyle"/>
+
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

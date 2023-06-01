@@ -18,6 +18,7 @@ import com.example.xchange.model.Product
 import com.example.xchange.model.SearchRequest
 import com.example.xchange.utils.adapters.ProductAdapter
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +30,7 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
 
     private lateinit var searchBtn: Button
     private lateinit var searchEt: EditText
-    private lateinit var messageEt: EditText
+    private lateinit var messageEt: MaterialTextView
 
     private lateinit var customerClient: CustomerClient
 
@@ -78,7 +79,7 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
                         }
                         else {
                             recyclerView.apply {
-                                productsAdapter = ProductAdapter(products)
+                                productsAdapter = ProductAdapter(products, customerClient, requireActivity())
                                 layoutManager = manager
                                 adapter = productsAdapter
                             }

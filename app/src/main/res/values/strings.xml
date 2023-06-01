@@ -52,4 +52,8 @@
     <string name="str_nothing_was_founded">Ничего не найдено...</string>
     <string name="hnt_input_search_request">Введите поисковой запрос</string>
     <string name="follow_the_product">Следить за ценой</string>
+    <string name="str_view_products">Посмотреть свои товары</string>
+    <string name="str_default_stuff_type">Айфон</string>
+    <string name="str_default_model_id">1</string>
+    <string name="str_amount_of_products">Количество</string>
 </resources>

@@ -26,6 +26,22 @@
             app:layout_constraintTop_toBottomOf="@+id/sv_scroll_subscriptions"
             style="@style/CardModelTitle"/>
 
+        <TextView
+            android:id="@+id/tv_stuff_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_default_stuff_type"
+            android:layout_marginStart="12dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_model_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_default_model_id"
+            android:layout_marginStart="12dp"
+            android:visibility="gone"/>
+
         <LinearLayout
             android:id="@+id/ll_suppliers_and_prices"
             android:layout_width="match_parent"
@@ -75,6 +91,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_subscribe_product"
             style="@style/ButtonGrey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
