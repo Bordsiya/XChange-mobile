@@ -33,9 +33,14 @@ class NotificationAdapter(private val data: List<Notification>, private val role
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.supplier_notification_card, parent, false)
-
-        return NotificationViewHolder(v, role)
+        if (role == Roles.SUPPLIER) {
+            val v = LayoutInflater.from(parent.context).inflate(R.layout.supplier_notification_card, parent, false)
+            return NotificationViewHolder(v, role)
+        }
+        else {
+            val v = LayoutInflater.from(parent.context).inflate(R.layout.customer_subscription_card, parent, false)
+            return NotificationViewHolder(v, role)
+        }
     }
 
     override fun getItemCount(): Int {

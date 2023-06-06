@@ -1,6 +1,6 @@
 package com.example.xchange.utils.adapters
 
-import android.app.Dialog
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,12 +64,14 @@ class ProductAdapter(private val data: List<Product>, private val isSubscribed: 
                 if (isSubscribed) subscribeButton.text = "Отписаться"
 
                 supplierTextView.setOnClickListener {
-                    val dialog = LayoutInflater.from(view.context).inflate(R.layout.customer_search_dialog_for_buy_product, null) as Dialog
-                    val dialogModel = dialog.findViewById<TextView>(R.id.tv_alert_model)
-                    val dialogSupplierId = dialog.findViewById<TextView>(R.id.tv_alert_supplier_id)
-                    val dialogAmountEt = dialog.findViewById<TextInputEditText>(R.id.te_alert_amount_of_products)
-                    val dialogBtnBack = dialog.findViewById<Button>(R.id.dialog_button_back)
-                    val dialogBtnSend = dialog.findViewById<Button>(R.id.dialog_button_send)
+                    val dialogLinearLayout = LayoutInflater.from(view.context).inflate(R.layout.customer_search_dialog_for_buy_product, null) as LinearLayout
+                    val dialog = AlertDialog.Builder(view.context).create()
+                    dialog.setView(dialogLinearLayout)
+                    val dialogModel = dialogLinearLayout.findViewById<TextView>(R.id.tv_alert_model)
+                    val dialogSupplierId = dialogLinearLayout.findViewById<TextView>(R.id.tv_alert_supplier_id)
+                    val dialogAmountEt = dialogLinearLayout.findViewById<TextInputEditText>(R.id.te_alert_amount_of_products)
+                    val dialogBtnBack = dialogLinearLayout.findViewById<Button>(R.id.dialog_button_back)
+                    val dialogBtnSend = dialogLinearLayout.findViewById<Button>(R.id.dialog_button_send)
 
                     dialogModel.text = product.modelId
                     dialogSupplierId.text = supplier
