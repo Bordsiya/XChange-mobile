@@ -14,6 +14,7 @@ import com.example.xchange.GlobalNavigator
 import com.example.xchange.R
 import com.example.xchange.api_clients.CustomerClient
 import com.example.xchange.api_clients.SupplierClient
+import com.example.xchange.model.Product
 import com.example.xchange.model.SearchRequest
 import com.example.xchange.model.UploadProductsRequest
 import com.google.android.material.textfield.TextInputEditText
@@ -80,19 +81,19 @@ class SupplierProductsFragment : Fragment(), GlobalNavigationHandler {
     private fun viewProducts() {
         productsEt.text?.clear()
         supplierClient.getSupplierAPI(requireActivity()).viewProducts()
-            .enqueue(object : Callback<String> {
+            .enqueue(object : Callback<List<Product>> {
 
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+                override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                     val products = response.body()
                     if (response.isSuccessful && products != null) {
-                        productsEt.setText(products)
+                        productsEt.setText(products.toString())
                     }
                     else {
                         Toast.makeText(requireContext(), "Ошибка во время получения списка товаров", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<List<Product>>, t: Throwable) {
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
                 }
 

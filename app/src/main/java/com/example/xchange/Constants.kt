@@ -11,6 +11,7 @@ object Constants {
 
     const val NOTIFICATION_LIST_URL = "/v1/notification/list"
     const val NOTIFICATION_STUFF_URL = "/v1/notification/stuff"
+    const val NOTIFICATION_SUBSCRIPTION_LIST = "/v1/notification/subscription/list"
 
     const val SUPPLIER_STUFF_URL = "/v1/supplier/stuff"
 

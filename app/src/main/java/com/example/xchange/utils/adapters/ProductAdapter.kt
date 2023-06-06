@@ -24,11 +24,11 @@ import retrofit2.Response
 import java.net.HttpURLConnection
 
 
-class ProductAdapter(private val data: List<Product>, private val customerClient: CustomerClient, private val fragmentActivity: FragmentActivity) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val data: List<Product>, private val isSubscribed: List<Boolean>, private val customerClient: CustomerClient, private val fragmentActivity: FragmentActivity) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(val view: View, val customerClient: CustomerClient, val fragmentActivity: FragmentActivity): RecyclerView.ViewHolder(view){
 
-        fun bind(product: Product){
+        fun bind(product: Product, isSubscribed: Boolean){
 
             val stuffType = view.findViewById<TextView>(R.id.tv_stuff_type)
             val modelId = view.findViewById<TextView>(R.id.tv_model_id)
@@ -61,6 +61,7 @@ class ProductAdapter(private val data: List<Product>, private val customerClient
 
                 val supplier = "@" + supplierPrice.supplierId
                 supplierTextView.text = supplier
+                if (isSubscribed) subscribeButton.text = "Отписаться"
 
                 supplierTextView.setOnClickListener {
                     val dialog = LayoutInflater.from(view.context).inflate(R.layout.customer_search_dialog_for_buy_product, null) as Dialog
@@ -159,6 +160,6 @@ class ProductAdapter(private val data: List<Product>, private val customerClient
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], isSubscribed[position])
     }
 }

@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.xchange.GlobalNavigationHandler
 import com.example.xchange.GlobalNavigator
 import com.example.xchange.R
 import com.example.xchange.api_clients.CustomerClient
+import com.example.xchange.model.NotificationSubscriptionResponse
 import com.example.xchange.model.Product
 import com.example.xchange.model.SearchRequest
 import com.example.xchange.utils.adapters.ProductAdapter
@@ -78,11 +80,43 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
                             messageEt.visibility = View.VISIBLE
                         }
                         else {
-                            recyclerView.apply {
-                                productsAdapter = ProductAdapter(products, customerClient, requireActivity())
-                                layoutManager = manager
-                                adapter = productsAdapter
-                            }
+                            val isSubscribedList = MutableList(products.size) { false }
+                            customerClient.getCustomerAPI(requireActivity()).getUsersSubscriptions()
+                                .enqueue(object: Callback<List<NotificationSubscriptionResponse>> {
+
+                                    override fun onResponse(
+                                        call: Call<List<NotificationSubscriptionResponse>>,
+                                        response: Response<List<NotificationSubscriptionResponse>>
+                                    ) {
+                                        val subscriptions = response.body()
+                                        if (response.isSuccessful && subscriptions != null) {
+                                            for (i in products.indices) {
+                                                if (subscriptions.filter {
+                                                        it.modelId == products[i].modelId
+                                                }.size == 1) isSubscribedList[i] = true
+                                            }
+
+                                            recyclerView.apply {
+                                                productsAdapter = ProductAdapter(products, isSubscribedList, customerClient, requireActivity())
+                                                layoutManager = manager
+                                                adapter = productsAdapter
+                                            }
+                                        }
+                                        else {
+                                            Toast.makeText(requireContext(),
+                                                "Ошибка при получении подписок пользователя",
+                                                Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+
+                                    override fun onFailure(
+                                        call: Call<List<NotificationSubscriptionResponse>>,
+                                        t: Throwable
+                                    ) {
+                                        Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
+                                    }
+
+                                })
                         }
                     }
                     else {

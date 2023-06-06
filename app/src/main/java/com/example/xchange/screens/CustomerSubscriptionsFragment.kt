@@ -19,8 +19,6 @@ import com.example.xchange.utils.adapters.NotificationAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.Timer
-import java.util.TimerTask
 
 class CustomerSubscriptionsFragment : Fragment(), GlobalNavigationHandler {
     private lateinit var customerClient: CustomerClient
@@ -45,38 +43,30 @@ class CustomerSubscriptionsFragment : Fragment(), GlobalNavigationHandler {
     }
 
     private fun getSubscriptions() {
-        val timer = Timer()
-        val timerTask: TimerTask = object : TimerTask() {
-            override fun run() {
-                customerClient.getCustomerAPI(requireActivity()).getSubscriptions()
-                    .enqueue(object : Callback<List<Notification>> {
+        customerClient.getCustomerAPI(requireActivity()).getNotifications()
+            .enqueue(object : Callback<List<Notification>> {
 
-                        override fun onResponse(
-                            call: Call<List<Notification>>,
-                            response: Response<List<Notification>>
-                        ) {
-                            val notifications = response.body()
-                            if (response.isSuccessful && notifications != null) {
-                                recyclerView.apply {
-                                    subscriptionsAdapter = NotificationAdapter(
-                                        notifications, Roles.CUSTOMER
-                                    )
-                                    layoutManager = manager
-                                    adapter = subscriptionsAdapter
-                                }
-                            } else {
-                                Log.d("timer_task", "ошибка во время получения нотификашек")
-                            }
+                override fun onResponse(
+                    call: Call<List<Notification>>,
+                    response: Response<List<Notification>>
+                ) {
+                    val notifications = response.body()
+                    if (response.isSuccessful && notifications != null) {
+                        recyclerView.apply {
+                            subscriptionsAdapter = NotificationAdapter(
+                                notifications, Roles.CUSTOMER
+                            )
+                            layoutManager = manager
+                            adapter = subscriptionsAdapter
                         }
+                    }
+                }
 
-                        override fun onFailure(call: Call<List<Notification>>, t: Throwable) {
-                            Log.d("timer_task", t.message.toString())
-                        }
+                override fun onFailure(call: Call<List<Notification>>, t: Throwable) {
+                    Log.d("timer_task", t.message.toString())
+                }
 
-                    })
-            }
-        }
-        timer.scheduleAtFixedRate(timerTask, 0, 1 * 60 * 1000)
+            })
     }
 
     override fun logout() {

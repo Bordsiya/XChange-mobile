@@ -47,37 +47,31 @@ class SupplierNotificationsFragment : Fragment(), GlobalNavigationHandler {
     }
 
     private fun getNotifications() {
-        val timer = Timer()
-        val timerTask: TimerTask = object : TimerTask() {
-            override fun run() {
-                supplierClient.getSupplierAPI(requireActivity()).getNotifications()
-                    .enqueue(object : Callback<List<Notification>> {
+        supplierClient.getSupplierAPI(requireActivity()).getNotifications()
+            .enqueue(object : Callback<List<Notification>> {
 
-                        override fun onResponse(
-                            call: Call<List<Notification>>,
-                            response: Response<List<Notification>>
-                        ) {
-                            val notifications = response.body()
-                            if (response.isSuccessful && notifications != null) {
-                                recyclerView.apply {
-                                    notificationsAdapter = NotificationAdapter(notifications, Roles.SUPPLIER)
-                                    layoutManager = manager
-                                    adapter = notificationsAdapter
-                                }
-                            }
-                            else {
-                                Log.d("timer_task", "ошибка во время получения нотификашек")
-                            }
+                override fun onResponse(
+                    call: Call<List<Notification>>,
+                    response: Response<List<Notification>>
+                ) {
+                    val notifications = response.body()
+                    if (response.isSuccessful && notifications != null) {
+                        recyclerView.apply {
+                            notificationsAdapter = NotificationAdapter(notifications, Roles.SUPPLIER)
+                            layoutManager = manager
+                            adapter = notificationsAdapter
                         }
+                    }
+                    else {
+                        Log.d("timer_task", "ошибка во время получения нотификашек")
+                    }
+                }
 
-                        override fun onFailure(call: Call<List<Notification>>, t: Throwable) {
-                            Log.d("timer_task", t.message.toString())
-                        }
+                override fun onFailure(call: Call<List<Notification>>, t: Throwable) {
+                    Log.d("timer_task", t.message.toString())
+                }
 
-                    })
-            }
-        }
-        timer.scheduleAtFixedRate(timerTask, 0, 1 * 60 * 1000)
+            })
     }
 
     override fun logout() {
