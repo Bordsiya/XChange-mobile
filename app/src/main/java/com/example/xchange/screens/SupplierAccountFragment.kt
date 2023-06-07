@@ -84,6 +84,8 @@ class SupplierAccountFragment : Fragment(), GlobalNavigationHandler {
     }
 
     override fun logout() {
+        sessionManager.saveAccessToken("")
+        sessionManager.saveRefreshToken("")
         val intent = Intent(
             activity,
             AuthorizationActivity::class.java)

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
+        android:text="Welcome Home!"
         android:textColor="#43a047"
         android:textSize="40sp"
         android:textStyle="italic|bold" />
