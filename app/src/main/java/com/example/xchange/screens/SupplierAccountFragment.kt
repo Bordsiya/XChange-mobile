@@ -49,6 +49,8 @@ class SupplierAccountFragment : Fragment(), GlobalNavigationHandler {
 
     private fun setListeners() {
         exitAccountTv.setOnClickListener {
+            sessionManager.saveAccessToken("")
+            sessionManager.saveRefreshToken("")
             val intent = Intent(
                 activity,
                 AuthorizationActivity::class.java)
@@ -84,8 +86,6 @@ class SupplierAccountFragment : Fragment(), GlobalNavigationHandler {
     }
 
     override fun logout() {
-        sessionManager.saveAccessToken("")
-        sessionManager.saveRefreshToken("")
         val intent = Intent(
             activity,
             AuthorizationActivity::class.java)

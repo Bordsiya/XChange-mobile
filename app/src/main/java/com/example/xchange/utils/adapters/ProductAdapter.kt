@@ -50,7 +50,7 @@ class ProductAdapter(private val data: List<Product>, private val isSubscribed: 
             modelId.text = product.modelId
             title.text = product.title
             for (supplierPrice in product.supplierPrices) {
-                val flagImageView = LayoutInflater.from(view.context).inflate(R.layout.customer_search_card_flag, null) as ImageView
+                val flagTextView = LayoutInflater.from(view.context).inflate(R.layout.customer_search_card_flag, null) as TextView
                 val priceTextView = LayoutInflater.from(view.context).inflate(R.layout.customer_search_card_price, null) as TextView
                 val dashTextView = LayoutInflater.from(view.context).inflate(R.layout.customer_search_card_dash, null) as TextView
                 val supplierTextView = LayoutInflater.from(view.context).inflate(R.layout.customer_search_card_supplier, null) as TextView
@@ -62,6 +62,7 @@ class ProductAdapter(private val data: List<Product>, private val isSubscribed: 
                 val supplier = "@" + supplierPrice.supplierId
                 supplierTextView.text = supplier
                 if (isSubscribed) subscribeButton.text = "Отписаться"
+                else subscribeButton.text = "Следить за ценой"
 
                 supplierTextView.setOnClickListener {
                     val dialogLinearLayout = LayoutInflater.from(view.context).inflate(R.layout.customer_search_dialog_for_buy_product, null) as LinearLayout
@@ -127,7 +128,10 @@ class ProductAdapter(private val data: List<Product>, private val isSubscribed: 
                         )
                     ).enqueue(object : Callback<Void> {
                         override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                            if (response.code() == HttpURLConnection.HTTP_OK) subscribeButton.text = "Отписаться"
+                            if (response.code() == HttpURLConnection.HTTP_OK) {
+                                if (action == "SUBSCRIBE") subscribeButton.text = "Отписаться"
+                                else subscribeButton.text = "Следить за ценой"
+                            }
                             else {
                                 Toast.makeText(fragmentActivity,
                                     "Ошибка во время отписки",
@@ -144,7 +148,7 @@ class ProductAdapter(private val data: List<Product>, private val isSubscribed: 
 
                 }
 
-                linearLayoutFlags.addView(flagImageView)
+                linearLayoutFlags.addView(flagTextView)
                 linearLayoutPrices.addView(priceTextView)
                 linearLayoutDashes.addView(dashTextView)
                 linearLayoutSuppliers.addView(supplierTextView)

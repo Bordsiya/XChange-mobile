@@ -65,6 +65,7 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
     }
 
     private fun getProducts() {
+        recyclerView.visibility = View.VISIBLE
         messageEt.visibility = View.INVISIBLE
         customerClient.getCustomerAPI(requireActivity()).searchProducts(buildRequest())
             .enqueue(object : Callback<List<Product>> {
@@ -76,6 +77,7 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
                     val products = response.body()
                     if (response.isSuccessful && products != null) {
                         if (products.isEmpty()) {
+                            recyclerView.visibility = View.INVISIBLE
                             messageEt.setText("По вашему запросу ничего не найдено")
                             messageEt.visibility = View.VISIBLE
                         }
@@ -103,6 +105,7 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
                                             }
                                         }
                                         else {
+                                            recyclerView.visibility = View.INVISIBLE
                                             Toast.makeText(requireContext(),
                                                 "Ошибка при получении подписок пользователя",
                                                 Toast.LENGTH_SHORT).show()
@@ -113,6 +116,7 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
                                         call: Call<List<NotificationSubscriptionResponse>>,
                                         t: Throwable
                                     ) {
+                                        recyclerView.visibility = View.INVISIBLE
                                         Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
                                     }
 
@@ -120,12 +124,14 @@ class CustomerSearchFragment : Fragment(), GlobalNavigationHandler {
                         }
                     }
                     else {
+                        recyclerView.visibility = View.INVISIBLE
                         messageEt.setText("По вашему запросу ничего не найдено")
                         messageEt.visibility = View.VISIBLE
                     }
                 }
 
                 override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+                    recyclerView.visibility = View.INVISIBLE
                     messageEt.setText("По вашему запросу ничего не найдено")
                     messageEt.visibility = View.VISIBLE
                 }

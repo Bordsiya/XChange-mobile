@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/customer_search_card_flag_iv"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:src="@drawable/default_flag_icon_foreground"
-    android:maxWidth="42dip"
-    android:scaleType="centerCrop"
-    android:adjustViewBounds ="true" />
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/customer_search_card_flag_tv"
+android:layout_width="match_parent"
+android:layout_height="fill_parent"
+android:layout_weight="1"
+android:text="🇷🇺"
+android:gravity="right"
+style="@style/CardText"/>

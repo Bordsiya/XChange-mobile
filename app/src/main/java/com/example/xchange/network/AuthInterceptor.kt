@@ -45,7 +45,8 @@ class AuthInterceptor (context: Context) : Interceptor {
                 return responseRefresh
             }
         }
-        else if (responseAccess.code == HttpURLConnection.HTTP_OK && (accessToken == null || refreshToken == null)) {
+        if (responseAccess.code == HttpURLConnection.HTTP_OK &&
+            (accessToken == null || refreshToken == null || accessToken == "" || refreshToken == "")) {
             sessionManager.saveAccessToken(responseAccess.headers["X-Access-Token"]!!)
             sessionManager.saveRefreshToken(responseAccess.headers["X-Refresh-Token"]!!)
         }
