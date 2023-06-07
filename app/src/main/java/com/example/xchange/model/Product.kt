@@ -19,10 +19,11 @@ data class Product(
         var productStr = "$title "
         for (property in propertyList) {
             if (property.value != "COUNTRY") productStr += property.value + " "
+            else productStr += Utils.convertCurrencyToEmoji(property.value) + " "
         }
         for (supplierPricesElem in supplierPrices) {
             productStr += supplierPricesElem.price.amount + " "
-            productStr += Utils.convertCurrencyToEmoji(supplierPricesElem.price.currency) + "\n"
+            productStr += supplierPricesElem.price.currency + "\n"
         }
         return productStr
     }

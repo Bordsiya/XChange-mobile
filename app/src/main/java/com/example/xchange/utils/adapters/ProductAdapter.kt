@@ -17,6 +17,7 @@ import com.example.xchange.api_clients.CustomerClient
 import com.example.xchange.model.BuyProductsRequest
 import com.example.xchange.model.NotificationSubscriptionRequest
 import com.example.xchange.model.Product
+import com.example.xchange.utils.Utils
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,6 +50,10 @@ class ProductAdapter(private val data: List<Product>, private val isSubscribed: 
             stuffType.text = product.stuffType
             modelId.text = product.modelId
             title.text = product.title
+
+            val flagText = product.propertyList.filter {
+                it.name == "COUNTRY"
+            }[0].value
             for (supplierPrice in product.supplierPrices) {
                 val flagTextView = LayoutInflater.from(view.context).inflate(R.layout.customer_search_card_flag, null) as TextView
                 val priceTextView = LayoutInflater.from(view.context).inflate(R.layout.customer_search_card_price, null) as TextView
@@ -63,6 +68,8 @@ class ProductAdapter(private val data: List<Product>, private val isSubscribed: 
                 supplierTextView.text = supplier
                 if (isSubscribed) subscribeButton.text = "Отписаться"
                 else subscribeButton.text = "Следить за ценой"
+
+                flagTextView.text = Utils.convertCurrencyToEmoji(flagText)
 
                 supplierTextView.setOnClickListener {
                     val dialogLinearLayout = LayoutInflater.from(view.context).inflate(R.layout.customer_search_dialog_for_buy_product, null) as LinearLayout
