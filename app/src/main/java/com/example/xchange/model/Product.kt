@@ -1,5 +1,6 @@
 package com.example.xchange.model
 
+import com.example.xchange.utils.Utils
 import com.google.gson.annotations.SerializedName
 
 data class Product(
@@ -13,4 +14,16 @@ data class Product(
     val propertyList: List<Property>,
     @SerializedName("supplierPrices")
     val supplierPrices: List<SupplierPrice>
-)
+) {
+    override fun toString(): String {
+        var productStr = "$title "
+        for (property in propertyList) {
+            if (property.value != "COUNTRY") productStr += property.value + " "
+        }
+        for (supplierPricesElem in supplierPrices) {
+            productStr += supplierPricesElem.price.amount + " "
+            productStr += Utils.convertCurrencyToEmoji(supplierPricesElem.price.currency) + "\n"
+        }
+        return productStr
+    }
+}

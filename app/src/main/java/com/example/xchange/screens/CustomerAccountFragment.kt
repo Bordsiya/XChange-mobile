@@ -26,6 +26,8 @@ class CustomerAccountFragment : Fragment(), GlobalNavigationHandler {
     private lateinit var customerUsernameTv: TextView
 
     private lateinit var userClient: UserClient
+    private lateinit var sessionManager: SessionManager
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +46,7 @@ class CustomerAccountFragment : Fragment(), GlobalNavigationHandler {
         customerUsernameTv = view.findViewById(R.id.customer_acc_username)
 
         userClient = UserClient()
+        sessionManager = SessionManager(requireContext())
     }
 
     private fun setListeners() {

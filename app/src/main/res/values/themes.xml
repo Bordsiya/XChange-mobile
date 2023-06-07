@@ -119,7 +119,7 @@
     </style>
 
     <style name="NotificationTextStyle">
-        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
     </style>

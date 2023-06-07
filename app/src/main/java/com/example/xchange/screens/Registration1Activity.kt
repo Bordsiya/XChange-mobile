@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.xchange.R
+import com.example.xchange.utils.Roles
 
 class Registration1Activity : AppCompatActivity() {
     private lateinit var roleTv: AutoCompleteTextView
@@ -75,8 +76,8 @@ class Registration1Activity : AppCompatActivity() {
             this@Registration1Activity,
             Registration2Activity::class.java)
         intent.putExtra("username", usernameEdt.text.toString())
-        if (selectedRole == "Покупатель") selectedRole = "Customer"
-        else if (selectedRole == "Поставщик") selectedRole = "Supplier"
+        if (selectedRole == "Покупатель") selectedRole = Roles.CUSTOMER.description
+        else if (selectedRole == "Поставщик") selectedRole = Roles.SUPPLIER.description
         intent.putExtra("role", selectedRole)
         startActivity(intent)
     }

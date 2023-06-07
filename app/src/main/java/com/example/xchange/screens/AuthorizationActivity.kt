@@ -14,6 +14,7 @@ import com.example.xchange.api_clients.UserClient
 import com.example.xchange.model.AuthCredentials
 import com.example.xchange.model.TokensRoleResponse
 import com.example.xchange.model.ResponseMessage
+import com.example.xchange.utils.Roles
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -102,12 +103,12 @@ class AuthorizationActivity : AppCompatActivity() {
     }
 
     private fun log(role : String) {
-        if (role == "Customer") {
+        if (role == Roles.CUSTOMER.description) {
             val intent = Intent(this@AuthorizationActivity, CustomerHomeActivity::class.java)
             startActivity(intent)
             finish()
         }
-        else if (role == "Supplier") {
+        else if (role == Roles.SUPPLIER.description) {
             val intent = Intent(this@AuthorizationActivity, SupplierHomeActivity::class.java)
             startActivity(intent)
             finish()

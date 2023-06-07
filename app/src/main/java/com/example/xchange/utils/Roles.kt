@@ -1,6 +1,6 @@
 package com.example.xchange.utils
 
-enum class Roles {
-    CUSTOMER,
-    SUPPLIER
+enum class Roles(val description: String) {
+    CUSTOMER("Customer"),
+    SUPPLIER("Supplier")
 }

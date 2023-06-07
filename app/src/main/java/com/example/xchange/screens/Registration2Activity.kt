@@ -14,6 +14,7 @@ import com.example.xchange.R
 import com.example.xchange.SessionManager
 import com.example.xchange.api_clients.UserClient
 import com.example.xchange.model.RegisterCredentials
+import com.example.xchange.utils.Roles
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -101,12 +102,12 @@ class Registration2Activity : AppCompatActivity() {
     }
 
     private fun log(role: String) {
-        if (role == "Customer") {
+        if (role == Roles.CUSTOMER.description) {
             val intent = Intent(this@Registration2Activity, CustomerHomeActivity::class.java)
             startActivity(intent)
             finish()
         }
-        else if (role == "Supplier") {
+        else if (role == Roles.SUPPLIER.description) {
             val intent = Intent(this@Registration2Activity, SupplierHomeActivity::class.java)
             startActivity(intent)
             finish()

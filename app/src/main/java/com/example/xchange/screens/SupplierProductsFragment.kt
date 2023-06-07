@@ -86,7 +86,8 @@ class SupplierProductsFragment : Fragment(), GlobalNavigationHandler {
                 override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                     val products = response.body()
                     if (response.isSuccessful && products != null) {
-                        productsEt.setText(products.toString())
+                        val productsString = products.toString()
+                        productsEt.setText(productsString.substring(1, productsString.length - 1))
                     }
                     else {
                         Toast.makeText(requireContext(), "Ошибка во время получения списка товаров", Toast.LENGTH_SHORT).show()

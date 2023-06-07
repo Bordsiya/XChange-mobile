@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.xchange.GlobalNavigationHandler
 import com.example.xchange.GlobalNavigator
 import com.example.xchange.R
+import com.example.xchange.SessionManager
 import com.example.xchange.api_clients.UserClient
 import com.example.xchange.model.UserInfoResponse
 import retrofit2.Call
@@ -24,6 +25,7 @@ class SupplierAccountFragment : Fragment(), GlobalNavigationHandler {
     private lateinit var customerUsernameTv: TextView
 
     private lateinit var userClient: UserClient
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +44,7 @@ class SupplierAccountFragment : Fragment(), GlobalNavigationHandler {
         customerUsernameTv = view.findViewById(R.id.supplier_acc_username)
 
         userClient = UserClient()
+        sessionManager = SessionManager(requireContext())
     }
 
     private fun setListeners() {
