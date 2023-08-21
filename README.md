@@ -1,2 +1,2 @@
 # XChange-mobile
-Frontend part of the group project: [](https://github.com/kkkooolllyyyaaa/MobileAppDevelopmentCourseProject)
+Frontend part of the group project: [XChange](https://github.com/kkkooolllyyyaaa/MobileAppDevelopmentCourseProject)
